@@ -10,18 +10,18 @@ public class Phone {
     private double screensize, memory, frontCameraRes, rearCameraRes, price;
     private Image image;
 
-    public Phone(String make, String model, String os, double screensize) {
+    public Phone(String make, String model, String os, double screensize, double memory, double frontCameraRes, double rearCameraRes) {
         setMake(make);
         setModel(model);
         setOs(os);
         setScreensize(screensize);
-    }
-
-    public Phone(String make, String model, String os, double screensize, double memory, double frontCameraRes, double rearCameraRes, double price, Image image) {
-        this(make, model, os, screensize);
         setMemory(memory);
         setFrontCameraRes(frontCameraRes);
         setRearCameraRes(rearCameraRes);
+    }
+
+    public Phone(String make, String model, String os, double screensize, double memory, double frontCameraRes, double rearCameraRes, double price, Image image) {
+        this(make, model, os, screensize, memory, frontCameraRes, rearCameraRes);
         setPrice(price);
         setImage(image);
     }
@@ -61,7 +61,7 @@ public class Phone {
     }
 
     public void setOs(String os) {
-        if(os == "iOS" || os == "Android" || os == "Blackberry"){
+        if(os.equals("iOS") || os.equals("Android") || os.equals("Blackberry")){
             this.os = os;
         }else{
             throw new IllegalArgumentException("OS must be iOS, Android, or Blackberry.");
