@@ -5,10 +5,15 @@ import Models.Phone;
 import Models.SceneChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -49,7 +54,28 @@ public class PhoneTableViewController implements Initializable {
      * @throws IOException
      */
     public void changeToPhoneDetailsScene(ActionEvent sceneChange) throws IOException {
-        SceneChanger.changeScenes(sceneChange, "../Views/PhoneDetailsView.fxml", "Phone Details");
+        Phone phoneSelected = tableView.getSelectionModel().getSelectedItem();
+
+        //check to ensure that a phone was selected before changing scenes
+        if (phoneSelected != null)
+        {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../Views/PhoneDetailsView.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+
+            //access the controller class and load the Phone object
+            PhoneDetailsViewController controller = loader.getController();
+            controller.loadPhone(phoneSelected);
+
+            //get the Stage and set the scene/show
+            Stage stage = (Stage)((Node)sceneChange.getSource()).getScene().getWindow();
+            stage.setTitle("Phone Details");
+            stage.setScene(scene);
+            stage.show();
+        }
+        //SceneChanger.changeScenes(sceneChange, "../Views/PhoneDetailsView.fxml", "Phone Details");
     }
 
     /**

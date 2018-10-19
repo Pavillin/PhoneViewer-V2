@@ -25,10 +25,10 @@
             <Label text="Model" GridPane.rowIndex="1" />
             <Label text="Memory" GridPane.rowIndex="2" />
             <Label prefWidth="210.0" text="Operating System" GridPane.rowIndex="3" />
-            <Label text="Label" GridPane.columnIndex="1" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="makeLabel" text="Label" GridPane.columnIndex="1" />
+            <Label fx:id="modelLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="memoryLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="osLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
       <Button layoutX="261.0" layoutY="293.0" mnemonicParsing="false" onAction="#changeToPhoneTableScene" text="Go Back" />
