@@ -2,12 +2,15 @@ package Controllers;
 
 import Models.DBConnect;
 import Models.Phone;
+import Models.SceneChanger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -38,5 +41,23 @@ public class PhoneTableViewController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * If user clicks 'Create Contact' button, switch to the 'Create a Contact' page
+     * @param sceneChange
+     * @throws IOException
+     */
+    public void changeToPhoneDetailsScene(ActionEvent sceneChange) throws IOException {
+        SceneChanger.changeScenes(sceneChange, "../Views/PhoneDetailsView.fxml", "Phone Details");
+    }
+
+    /**
+     * If user clicks 'Create Contact' button, switch to the 'Create a Contact' page
+     * @param sceneChange
+     * @throws IOException
+     */
+    public void changeToPhoneCreatorScene(ActionEvent sceneChange) throws IOException {
+        SceneChanger.changeScenes(sceneChange, "../Views/PhoneCreatorView.fxml", "Create a Phone");
     }
 }
