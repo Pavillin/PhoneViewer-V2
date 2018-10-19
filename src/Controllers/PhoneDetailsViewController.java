@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PhoneDetailsViewController implements Initializable {
+public class PhoneDetailsViewController implements Initializable, PhoneLoaderInterface {
     @FXML private Label makeLabel;
     @FXML private Label modelLabel;
     @FXML private Label memoryLabel;

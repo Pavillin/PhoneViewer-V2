@@ -1,5 +1,7 @@
 package Models;
 
+import Controllers.PhoneDetailsViewController;
+import Controllers.PhoneLoaderInterface;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -26,5 +28,23 @@ public class SceneChanger {
         primaryStage.setScene(scene);
         primaryStage.setTitle(title);
         primaryStage.show();
+    }
+
+    public static void changeScenes(ActionEvent sceneChange, String viewName, String title, Phone phone) throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(new Object(){}.getClass().getResource("../Views/PhoneDetailsView.fxml"));
+        Parent root = loader.load();
+
+        Scene scene = new Scene(root);
+
+        //access the controller class and load the Phone object
+        PhoneLoaderInterface controller = loader.getController();
+        controller.loadPhone(phone);
+
+        //get the Stage and set the scene/show
+        Stage stage = (Stage)((Node)sceneChange.getSource()).getScene().getWindow();
+        stage.setTitle("Phone Details");
+        stage.setScene(scene);
+        stage.show();
     }
 }

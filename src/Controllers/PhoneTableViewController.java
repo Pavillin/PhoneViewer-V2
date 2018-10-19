@@ -55,27 +55,11 @@ public class PhoneTableViewController implements Initializable {
      */
     public void changeToPhoneDetailsScene(ActionEvent sceneChange) throws IOException {
         Phone phoneSelected = tableView.getSelectionModel().getSelectedItem();
-
         //check to ensure that a phone was selected before changing scenes
         if (phoneSelected != null)
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../Views/PhoneDetailsView.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-
-            //access the controller class and load the Phone object
-            PhoneDetailsViewController controller = loader.getController();
-            controller.loadPhone(phoneSelected);
-
-            //get the Stage and set the scene/show
-            Stage stage = (Stage)((Node)sceneChange.getSource()).getScene().getWindow();
-            stage.setTitle("Phone Details");
-            stage.setScene(scene);
-            stage.show();
+            SceneChanger.changeScenes(sceneChange, "../Views/PhoneDetailsView.fxml", "Phone Details", phoneSelected);
         }
-        //SceneChanger.changeScenes(sceneChange, "../Views/PhoneDetailsView.fxml", "Phone Details");
     }
 
     /**
